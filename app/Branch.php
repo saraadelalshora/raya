@@ -19,5 +19,6 @@ class Branch extends Model
     }
 
 
-    
+
 }
+  
