@@ -18,7 +18,7 @@ class Branch extends Model
         return $this->belongsTo('App\Country');
     }
 
-//test git 
+//test git 2
 
 
 
