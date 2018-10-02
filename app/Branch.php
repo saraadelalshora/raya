@@ -17,4 +17,7 @@ class Branch extends Model
     {
         return $this->belongsTo('App\Country');
     }
+
+
+    
 }
