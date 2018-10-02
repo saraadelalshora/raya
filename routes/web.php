@@ -47,6 +47,8 @@ Route::group(['middleware' => 'is.admin'], function () {
   Route::resource('admin/countries','admin\CountryController');
   //category
   Route::resource('admin/categories','admin\CategoryController');
+   //branches
+   Route::resource('admin/branches','admin\BranchController');
   //Brand
   Route::resource('admin/brands','admin\BrandController');
   //Labels

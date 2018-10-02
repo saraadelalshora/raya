@@ -179,7 +179,8 @@ body {
           </ul>
         
         </li>
-        <li><a href="{{url('admin/users')}}"><i class="fa fa-user-circle"></i> <span>User</span></a></li>                
+        <li><a href="{{url('admin/users')}}"><i class="fa fa-user-circle"></i> <span>User</span></a></li> 
+        <li><a href="{{url('admin/branches')}}"><i class="fa fa-user-circle"></i> <span>Branches</span></a></li>                 
         <li><a href="{{url('admin/suppliers')}}"><i class="fa fa-user-circle"></i> <span>Supplier</span></a></li>        
         <li><a href="{{url('admin/offers')}}"><i class="fa fa-bullhorn"></i> <span>Offers</span></a></li>
         <li><a href="{{url('admin/orders')}}"><i class="fa fa-cart-plus"></i> <span>Orders</span></a></li>
