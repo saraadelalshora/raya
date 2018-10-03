@@ -173,7 +173,8 @@ body {
           <ul class="treeview-menu" style="display: none;">
           <li class="level"><a href="{{url('admin/products')}}"><i class="fa fa-product-hunt"></i> <span>Products</span></a></li> 
           <li><a href="{{url('admin/categories')}}"><i class="fa fa-link"></i> <span>Categories</span></a></li>
-          <li><a href="{{url('admin/brands')}}"><i class="fa fa-angellist"></i> <span>Product Feature</span></a></li>
+          <li><a href="{{url('admin/features')}}"><i class="fa fa-angellist"></i> <span>Product Feature</span></a></li>
+          <li><a href="{{url('admin/featuredetails')}}"><i class="fa fa-angellist"></i> <span> Feature Details</span></a></li>
           <li><a href="{{url('admin/labels')}}"><i class="fa fa-get-pocket"></i> <span>Labels</span></a></li>
 
           </ul>

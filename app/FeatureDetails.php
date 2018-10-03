@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FeatureDetail extends Model
+class FeatureDetails extends Model
 {
+    protected $table = 'features_detailes';
     //'feature_id', 'name_ar', 'name_en', 'details_ar', 'details_en',
     Protected $fillable=[
         'feature_id', 'name_ar', 'name_en', 'details_ar', 'details_en',

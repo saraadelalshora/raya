@@ -61,6 +61,11 @@ Route::group(['middleware' => 'is.admin'], function () {
   Route::resource('admin/products','admin\ProductController');
   //Coupon
   Route::resource('admin/coupons','admin\CouponController');
+  //features
+  Route::resource('admin/features','admin\FeatureController');
+  //feature details
+  Route::resource('admin/featuredetails','admin\FeatureDetailsController');
+
   Route::resource('admin/featureproduct','admin\FeatureProductController');
  //images
  Route::resource('image','ImageController');
