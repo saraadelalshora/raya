@@ -4,10 +4,10 @@
 <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit category</h2>
+                <h2>Edit Bracnh</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary fa fa-arrow-left" href="{{ route('categories.index') }}"> Back</a>
+                <a class="btn btn-primary fa fa-arrow-left" href="{{ route('branches.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -28,20 +28,18 @@
     <div class="box-header with-border">
 
      </div>
-    <form class="form-horizontal" action="{{ route('categories.update',$category->id) }}" method="post">
-       {{csrf_field()}}
-       @method('PUT')
+    <form class="form-horizontal" action="{{ route('branches.update',$branch->id) }}" method="post">
+        {{csrf_field()}}
+        @method('PUT')
   <div class="col-lg-12 col-md-12">
   
-  <!-- form of user -->
-<!-- //'name_en', 'name_ar','country_id','parent_id', -->
-  
-                          <!-- {{csrf_field()}} -->
+  <!-- form of user -->  
+                      
                           <div class="form-group">
                           <label for="name" class=" col-form-label text-md-right">{{ __('Name English ') }}</label>
 
                           <div class="">
-                              <input id="name_en " type="text" class="form-control" name="name_en" value="{{$category->name_en}}" required autofocus>
+                              <input id="name_en " type="text" class="form-control" name="name_en" value="{{$branch->name_en}}" required autofocus>
                              
                           </div>
                       </div>
@@ -49,55 +47,61 @@
                           <label for="name" class=" col-form-label text-md-right">{{ __('Name Arabic') }}</label>
 
                             <div class="">
-                              <input id="name_ar" type="text" class="form-control" name="name_ar" value=" {{$category->name_ar}} " required autofocus>
+                              <input id="name_ar" type="text" class="form-control" name="name_ar" value=" {{$branch->name_ar}} " required autofocus>
 
                             </div>
                         </div>
-                        <div class="row">
-                        <div class="form-group col-md-6">
-                         <label for="name" class=" col-form-label text-md-right">{{ __('Parent Category') }}</label>
+                     
+                        <div class="form-group">
+                            <label for="name" class=" col-form-label text-md-right">{{ __('Address English ') }}</label>
+  
+                            <div class="">
+                                <input id="address_en " type="text" class="form-control" name="address_en" value="{{$branch->address_en}}" required autofocus>
+                               
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label for="address_ar" class=" col-form-label text-md-right">{{ __('Address Ar') }}</label>
+  
+                              <div class="">
+                                <input id="address_ar" type="text" class="form-control" name="address_ar" value=" {{$branch->address_ar}} " required autofocus>
+                              </div>
+                          </div>
 
-                            <select class="form-control" name="parent_id">
-                            <option value=" " >  </option>    
 
-                           @if ($categories->count())
+                          <div class="form-group ">
+                            <label for="phone" class=" col-form-label text-md-right">{{ __('phone') }}</label>
+  
+                              <div class="">
+                                <input id="phone" type="text" class="form-control" name="phone" value=" {{$branch->phone}} " required autofocus >
+                              </div>
+                          </div>
 
-                             @foreach($categories as $category)
-                              <option value="{{ $category->id }}" {{ $category->id ==  $category->category_id ? ' selected="selected"' : '' }} >{{ $category->name_en}}</option>    
-                             @endforeach
-                            @endif
-                           </select>
-                       </div>
-                       <div class="form-group col-md-6">
-                           <label for="status" class=" col-form-label text-md-right">{{ __('status') }}</label>
-                           <select name="status" class="form-control">
-                           <option value="1" {{ $category->status == 1? ' selected="selected"' : ''}} >Active</option>    
-                           <option value="0" {{ $category->status == 0? ' selected="selected"' : ''}}>Inactive</option>   
-                             
-                           </select>
-                         </div>
-                         </div>
+                          <div class="form-group ">
+                            <label for="email" class=" col-form-label text-md-right">{{ __('email') }}</label>
+  
+                              <div class="">
+                                <input id="address_ar" type="email" class="form-control" name="email" value=" {{$branch->email}} "  required autofocus >
+                              </div>
+                          </div>
+
+
                         <div class="form-group ">
                         <label for="name" class=" col-form-label text-md-right">{{ __('Country') }}</label>
 
                           <div class="">
                            
                           <select name="country_id" class="form-control" >
-                            @if ($Countries->count())
+                            @if ($countries->count())
 
-                              @foreach($Countries as $country)
+                              @foreach($countries as $country)
                                <option value="{{ $country->id }}" >{{ $country->name_en}}</option>    
                               @endforeach
                              @endif
                             </select>
                           </div>
                       </div>
-                      <div class="form-group ">
-                            <label for="name" class=" col-form-label text-md-right">{{ __('order') }}</label>
-
-                              <input id="order" type="number"  min="1" class="form-control" name="order" value="{{$category->order}}" required autofocus>
-
-                        </div>
+                  
 
  </div>
  <div class="box-footer">

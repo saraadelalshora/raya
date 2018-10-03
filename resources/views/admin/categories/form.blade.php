@@ -43,6 +43,22 @@
                             </select>
                           </div>
                           </div>
+                          <div class="row">
+                          <div class="form-group col-md-6">
+                            <label for="name" class=" col-form-label text-md-right">{{ __('English Details') }}</label>
+    
+                            <textarea id="details_en "  class="form-control" name="details_en"  ></textarea>
+    
+                            </div>
+
+                            <div class="form-group col-md-6">
+                              <label for="name" class=" col-form-label text-md-right">{{ __('Arabic Details') }}</label>
+      
+                              <textarea id="details_ar "  class="form-control" name="details_ar"  ></textarea>
+      
+                              </div>
+                          </div>
+
                         <div class="form-group ">
                         <label for="name" class=" col-form-label text-md-right">{{ __('Country') }}</label>
                     
@@ -64,3 +80,10 @@
                         </div>
 
  </div>
+
+ <script src="http://cdn.tinymce.com/4/tinymce.min.js"></script>
+ <script>
+ tinymce.init({
+    selector: 'textarea',
+  });
+ </script>

@@ -219,7 +219,7 @@ body {
    <footer class="main-footer">
    
     <center>
-    <strong>Copyright &copy; 2018 <a href="#">Bluesoftec</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2018 <a href="#">INC HOUSE</a>.</strong> All rights reserved.
    </center>
   </footer>
 

@@ -5,10 +5,10 @@
 <div class="row" style="padding-bottom: 10px;">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Add New Country</h2>
+                <h2>Add New Branch</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary fa fa-arrow-left" href="{{ route('categories.index') }}"> Back</a>
+                <a class="btn btn-primary fa fa-arrow-left" href="{{ route('branches.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -30,10 +30,10 @@
     <div class="box-header with-border">
 
      </div>
-    <form class="form-horizontal" action="{{route('categories.store')}}" method="post">
+    <form class="form-horizontal" action="{{route('branches.store')}}" method="post">
         @csrf
 
-               @include('admin.categories.form')
+               @include('admin.branches.form')
                <div class="box-footer">
                <button type="submit" class="btn btn-primary">Save</button>
         </div>

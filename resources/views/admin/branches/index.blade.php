@@ -9,14 +9,14 @@
     padding-top: 0px;
     padding-bottom: 20px;
     margin-top: 20px;">
-<h3 class="panel-title">All Categories</h3>
+<h3 class="panel-title">All Branches</h3>
     </div>
     
     <div class="pull-right"style="
     padding-top: 0px;
     padding-bottom: 20px;
     margin-top: 20px;">
-                <a class="btn btn-success fa fa-plus" href="{{ route('categories.create') }}"> Create New</a>
+                <a class="btn btn-success fa fa-plus" href="{{ route('branches.create') }}"> Create New</a>
     </div>
   </div>
   <div class="panel-body">
@@ -41,7 +41,7 @@
    <td>{{$x++}} </td>
   <td>{{$branch->name_en}}</td>
   @if(!empty($branch->country->name_en))
-  <td>{{$branch->address}}</td>
+  <td>{{ $branch->country->name_en }}</td>
   @else
   <td></td>
   @endif
@@ -65,8 +65,8 @@
 
   <td> 
   <form class="delete" action="{{ route('branches.destroy',$branch->id) }}" method="POST">
-  <!-- <a class="btn btn-info" href="{{ route('categories.show',$branch->id) }}">Show</a> -->
-  <a class="fa fa-edit "  style="font-size:16px" href="{{ route('categories.edit',$branch->id) }}"></a>
+   <a class="fa fa-eye" href="{{ route('branches.show',$branch->id) }}"></a> 
+  <a class="fa fa-edit "  style="font-size:16px" href="{{ route('branches.edit',$branch->id) }}"></a>
    <input type="hidden" name="_method" value="DELETE">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
         <button type="submit " class="fa fa-close"  style="font-size:14px;color:red " value="Delete"> </button>

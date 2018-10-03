@@ -31,7 +31,8 @@ class BranchController extends Controller
     public function create()
     {
         $branches = Branch::all();
-        return view('admin.branches.create', compact('branches'));
+        $countries = Country::all();
+        return view('admin.branches.create', compact('branches', 'countries'));
 
     }
 
@@ -44,21 +45,20 @@ class BranchController extends Controller
     public function store(Request $request)
     {
         //'name_en', 'name_ar','country_id','parent_id',
-      
+
         request()->validate([
             'name_en' => 'required',
             'name_ar' => 'required',
             'country_id' => 'required',
             'address_en' => 'required',
             'address_ar' => 'required',
-            'order' => 'required',
-            'phone' => 'phone',
+            'phone' => 'required|min:11|numeric',
             'email' => 'email',
         ]);
         $input = $request->all();
 
-        $branch = new Branch;
-        Branch::create($branch);
+        //   $branch = new Branch;
+        Branch::create($input);
         return redirect()->route('branches.index')
             ->with('success', 'Branch Add successfully');
 
@@ -67,26 +67,28 @@ class BranchController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Branch  $Branch
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
         //
+        $branch = Branch::find($id);
+        return view('admin.branches.show', compact('branch'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Branch  $Branch
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Branch $branch)
     {
         //
-        $Countries = Country::all();
-        $categories = Category::all();
-        return view('admin.categories.edit', compact('category', 'Countries', 'categories'));
+        $countries = Country::all();
+        $branches = Branch::all();
+        return view('admin.branches.edit', compact('branches', 'countries','branch'));
 
     }
 
@@ -94,11 +96,12 @@ class BranchController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
+     * @param  \App\Branch  $Branch
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Branch $branch)
     {
+  
         //
         request()->validate([
             'name_en' => 'required',
@@ -106,11 +109,10 @@ class BranchController extends Controller
             'country_id' => 'required',
             'address_en' => 'required',
             'address_ar' => 'required',
-            'order' => 'required',
             'phone' => 'required|min:11|numeric',
             'email' => 'email',
         ]);
-        $$branch->update($request->all());
+        $branch->update($request->all());
         return redirect()->route('branches.index')
             ->with('success', 'Branch Updated successfully');
 
@@ -119,13 +121,14 @@ class BranchController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Branch  $Branch
      * @return \Illuminate\Http\Response
      */
+
     public function destroy(Branch $branch)
     {
-        //
-        $category->delete();
+        
+        $branch->delete();
         return redirect()->route('branches.index')
             ->with('success', 'Branch Deleted successfully');
 

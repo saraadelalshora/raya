@@ -5,7 +5,7 @@
 <div class="row" style="padding-bottom: 10px;">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Add New Country</h2>
+                <h2>Add New Category</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary fa fa-arrow-left" href="{{ route('categories.index') }}"> Back</a>

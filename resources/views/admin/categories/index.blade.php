@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <div class="panel panel-primary">
   <div class="panel-heading">
   <div class="pull-left"style="
@@ -26,7 +25,6 @@
     <tr>     
     <th>#</th>
     <th>Name English</th>
-    <th>country</th>
     <th>Parent Category</th>
     <th>order</th>
     <th>statues</th>
@@ -40,15 +38,11 @@
    <tr>
    <td>{{$x++}} </td>
   <td>{{$category->name_en}}</td>
-  @if(!empty($category->country->name_en))
-  <td>{{$category->country->name_en}}</td>
-  @else
-  <td></td>
-  @endif
+ 
   @if(!empty($category->subcategory->name_en))
-  <td> </td>
+  <td>{{ $category->subcategory->name_en }} </td>
   @else
- <td>sas </td>
+ <td> </td>
   @endif
   <td>{{$category->order}}</td>
   @if($category->status==1)
@@ -61,7 +55,7 @@
 
   <td> 
   <form class="delete" action="{{ route('categories.destroy',$category->id) }}" method="POST">
-  <!-- <a class="btn btn-info" href="{{ route('categories.show',$category->id) }}">Show</a> -->
+   <a class="fa fa-tv" href="{{ route('categories.show',$category->id) }}"></a> 
   <a class="fa fa-edit "  style="font-size:16px" href="{{ route('categories.edit',$category->id) }}"></a>
    <input type="hidden" name="_method" value="DELETE">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
