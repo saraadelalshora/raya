@@ -7,7 +7,7 @@
            
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary fa fa-arrow-left" href="{{ route('features.index') }}"> Back</a>
+                <a class="btn btn-primary fa fa-arrow-left" href="{{ route('featuredetails.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -29,9 +29,9 @@
 
 <h3 class="box-title">New Feature</h3>
  </div>
-<form class="form-horizontal" action="{{route('features.store')}}" method="post" enctype="multipart/form-data">
+<form class="form-horizontal" action="{{  route('featuredetails.store') }}" method="post" enctype="multipart/form-data">
         @csrf
-               @include('admin.features.form')
+               @include('admin.featuredetails.form')
          <div class="box-footer">
         <button type="submit" class="btn btn-primary">Save</button>
         </div>

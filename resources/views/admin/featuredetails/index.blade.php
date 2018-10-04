@@ -16,7 +16,7 @@
     padding-top: 0px;
     padding-bottom: 20px;
     margin-top: 20px;">
-                <a class="btn btn-success	fa fa-plus" href="{{ route('features.create') }}"> Create New</a>
+                <a class="btn btn-success	fa fa-plus" href="{{ route('featuredetails.create') }}"> Create New</a>
     </div>
   </div>
   <div class="panel-body">
@@ -49,9 +49,9 @@
   @endif
  
   <td> 
-  <form class="delete" action="{{ route('features.destroy',$feature->id) }}" method="POST">
-  <!-- <a class="btn btn-info" href="{{ route('features.show',$feature->id) }}">Show</a> -->
-  <a class="fa fa-edit "  style="font-size:16px" href="{{ route('features.edit',$feature->id) }}"></a>
+  <form class="delete" action="{{ route('featuredetails.destroy',$feature->id) }}" method="POST">
+  <a class="fa fa-tv" href="{{ route('featuredetails.show',$feature->id) }}"></a> 
+  <a class="fa fa-edit "  style="font-size:16px" href="{{ route('featuredetails.edit',$feature->id) }}"></a>
    <!-- @csrf
    @method('DELETE')
    <button type="submit " class="fa fa-close"  style="font-size:16px;color:red "> </button> -->

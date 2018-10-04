@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Country;
+use App\feature;
 use App\FeatureDetails;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class FeatureDetailsController extends Controller
     public function index()
     {
         $features = FeatureDetails::latest()->paginate(50);
-        return view('admin.features.index', compact('features'))
+        return view('admin.featuredetails.index', compact('features'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
 
     }
@@ -30,8 +31,8 @@ class FeatureDetailsController extends Controller
     public function create()
     {
         //
-        $featutes = Feature::all();
-        return view('admin.features.create', compact('features'));
+        $featutes = FeatureDetails::all();
+        return view('admin.featuredetails.create', compact('features'));
 
     }
 
@@ -43,22 +44,26 @@ class FeatureDetailsController extends Controller
      */
     public function store(Request $request)
     {
+
         //'name_en', 'name_ar','country_id','parent_id',
         //
         request()->validate([
             'name_en' => 'required',
             'name_ar' => 'required',
+            'feature_id' => 'required',
 
         ]);
 
-        $feature = new Feature();
+        $feature = new FeatureDetails();
         $feature->name_en = $request->name_en;
         $feature->name_ar = $request->name_ar;
-        $feature->slug = str_slug($request->name_en);
+        $feature->details_en = $request->details_en;
+        $feature->details_ar = $request->details_ar;
+        $feature->feature_id = $request->feature_id;
         $feature->save();
 
-        return redirect()->route('features.index')
-            ->with('success', 'feature Add successfully');
+        return redirect()->route('featuredetails.index')
+            ->with('success', 'feature details Add successfully');
 
     }
 
@@ -71,8 +76,9 @@ class FeatureDetailsController extends Controller
     public function show($id)
     {
         //
-        $feature = feature::find($id);
-        return view('admin.features.show', compact('feature'));}
+        $feature = FeatureDetails::find($id);
+        return view('admin.featuredetails.show', compact('feature'));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -80,12 +86,13 @@ class FeatureDetailsController extends Controller
      * @param  \App\feature  $feature
      * @return \Illuminate\Http\Response
      */
-    public function edit(feature $feature)
+    public function edit($id)
     {
         //
         $Countries = Country::all();
-        $features = feature::all();
-        return view('admin.features.edit', compact('feature', 'Countries', 'features'));
+        $feature = FeatureDetails::find($id);
+        $features = FeatureDetails::all();
+        return view('admin.featuredetails.edit', compact('feature', 'Countries', 'features'));
 
     }
 
@@ -97,19 +104,18 @@ class FeatureDetailsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, feature $feature)
+    public function update(Request $request, $id)
     {
-        //
+
         request()->validate([
             'name_en' => 'required',
             'name_ar' => 'required',
         ]);
-        $feature->update(['name_en' => $request->name_en,
-            'name_ar' => $request->name_ar,
-            'slug' => str_slug($request->name_en),
-        ]);
-        return redirect()->route('features.index')
-            ->with('success', 'feature Updated successfully');
+        $feature= FeatureDetails::find($id);
+        $input = $request->all();
+        $feature->update($input);
+        return redirect()->route('featuredetails.index')
+            ->with('success', 'feature details Updated successfully');
 
     }
 
@@ -119,12 +125,12 @@ class FeatureDetailsController extends Controller
      * @param  \App\feature  $feature
      * @return \Illuminate\Http\Response
      */
-    public function destroy(feature $feature)
+    public function destroy($id)
     {
-        //
+        $feature = FeatureDetails::find($id);
         $feature->delete();
-        return redirect()->route('features.index')
-            ->with('success', 'feature Deleted successfully');
+        return redirect()->route('featuredetails.index')
+            ->with('success', 'feature details Deleted successfully');
 
     }
 }
