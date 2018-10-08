@@ -43,7 +43,7 @@
 
                             </div>
                         </div>
-
+ 
                         <div class="form-group ">
                           <label for="name" class=" col-form-label text-md-right">{{ __('Address Ar') }}</label>
 
